@@ -179,9 +179,9 @@ void loop() {
 
     scan(curdeg);
     if(limitdeg == 1){
-      curdeg++;
+      curdeg += 2;
     }else{
-      curdeg--;
+      curdeg -= 2;
     }
 
     if(curdeg <= 50){
@@ -201,7 +201,7 @@ void loop() {
       calibrate = 1;
       Serial.print("Obstacle detected!");
       reverse();
-      delay(200);
+      delay(300);
       halt();
       
       lookLeft(deg);
@@ -219,7 +219,7 @@ void loop() {
       if(Rdistance <= obstacle && Ldistance <= obstacle){
           Serial.println("Turning Back!");
           turnLeft();
-          delay(600);
+          delay(500);
           halt();
           servo.write(95); //upfront
           delay(1000);
@@ -227,14 +227,14 @@ void loop() {
           if(Rdistance > Ldistance){
               Serial.println("Turning Right");
               turnRight();
-              delay(400);
+              delay(250);
               halt();
               servo.write(95); //upfront
               delay(1000);
           } else{
               Serial.println("Turning Left");
               turnLeft();
-              delay(400);
+              delay(250);
               halt();
               servo.write(95); //upfront
               delay(1000);
